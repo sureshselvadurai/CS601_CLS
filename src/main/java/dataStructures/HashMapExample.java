@@ -12,6 +12,32 @@ public class HashMapExample {
     */
      public static void computeFrequencies(String[] words) {
         Map<String, Integer> counterMap = new HashMap<>();
+
+        HashMap<String,Integer> final_out = new HashMap<>();
+        for (String val:words){
+            if(final_out.containsKey(val)){
+                int val_inc = final_out.get(words)+1;
+                final_out.put(val,val_inc);
+            }
+            else{
+             final_out.put(val,1);
+            }
+            System.out.println(final_out);
+
+        }
+
+//        Entry - key,val of the hashmap
+//         To take a note
+        for (Map.Entry<String,Integer> entry : final_out.entrySet()){
+
+        }
+
+
+
+
+
+
+
         for (String word: words) {
             if (counterMap.containsKey(word)) {
                 int count  = counterMap.get(word);
@@ -33,6 +59,36 @@ public class HashMapExample {
      * @param words array of strings
      */
     public static void computeLengthToWords(String[] words) {
+
+
+
+        HashMap<Integer,HashSet> final_out = new HashMap<>();
+        for (String word: words){
+            Integer wordlength = word.length();
+            if(final_out.containsKey(wordlength)){
+
+                HashSet<String> iter_loop = final_out.get(word);
+                iter_loop.add(word);
+                final_out.put(wordlength,iter_loop);
+
+            }
+            else{
+                HashSet iter_loop = new HashSet();
+                iter_loop.add(word);
+                final_out.put(wordlength,iter_loop);
+            }
+
+        System.out.println(final_out);
+        }
+
+
+
+
+
+
+
+
+
         HashMap<Integer, HashSet<String>> lengthToWords = new HashMap<>();
         // the key is the length of a stirng, the value  - a set of words that have this length
         for (String word: words) {
